@@ -1,0 +1,24 @@
+<div class="student-form">
+    <h2>{{ isEdit ? 'Edit' : 'Add' }} Student</h2>
+
+    <form (ngSubmit)="save()">
+        <div>
+            <label for="name">Name</label>
+            <input id="name" title="Name" placeholder="Full name" [(ngModel)]="model.name" name="name" required />
+        </div>
+        <div>
+            <label for="age">Age</label>
+            <input id="age" title="Age" placeholder="e.g. 21" type="number" [(ngModel)]="model.age" name="age"
+                required />
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input id="email" title="Email" placeholder="email@example.com" [(ngModel)]="model.email" name="email" />
+        </div>
+
+        <div class="actions">
+            <button type="submit" [disabled]="saving">Save</button>
+            <button type="button" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

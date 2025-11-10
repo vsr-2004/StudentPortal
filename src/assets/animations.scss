@@ -1,0 +1,114 @@
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Apply animations */
+.card,
+.form-container,
+.student-card {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.nav-item {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Hover effects */
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* Button animations */
+button {
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.3s ease, height 0.3s ease;
+    }
+
+    &:active::after {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/* Form transitions */
+input,
+select,
+textarea {
+    transition: all 0.3s ease;
+
+    &:focus {
+        transform: scale(1.01);
+    }
+}
+
+/* Table row hover effect */
+tr {
+    transition: background-color 0.2s ease;
+
+    &:hover {
+        background-color: rgba(74, 144, 226, 0.05);
+    }
+}
+
+/* Alert animations */
+.alert {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Navigation hover effects */
+nav ul li a {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: width 0.3s ease;
+    }
+
+    &:hover::after {
+        width: 100%;
+    }
+}

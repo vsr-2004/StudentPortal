@@ -1,0 +1,43 @@
+using StudentPortalAPI.DataAccess;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddControllers();
+
+// Register StudentDAL as a transient service for DI (keeps your existing DAL)
+builder.Services.AddTransient<StudentDAL>();
+
+// Add CORS policy for Angular dev server
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularDev", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200")   // Angular dev server
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
+    });
+});
+
+// Register EF Core DbContext using connection string name "StudentDB" from appsettings.json
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("StudentDB")));
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+app.UseHttpsRedirection();
+
+app.UseRouting();
+
+// Enable CORS (should be called before MapControllers)
+app.UseCors("AllowAngularDev");
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();
+

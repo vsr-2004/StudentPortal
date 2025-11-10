@@ -7,7 +7,8 @@
     "types": []
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "src/app/features/auth/register/register"
   ],
   "exclude": [
     "src/**/*.spec.ts"

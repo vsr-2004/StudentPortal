@@ -1,0 +1,33 @@
+.login-container {
+    max-width: 300px;
+    margin: 32px auto;
+    background: #222;
+    padding: 24px 20px;
+    border-radius: 8px;
+    color: #eee;
+
+    h2 {
+        text-align: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .error {
+        color: #ff867c;
+        text-align: center;
+        margin-top: 16px;
+    }
+
+    input,
+    button {
+        padding: 6px;
+        border-radius: 3px;
+        border: 1px solid #444;
+        background: #333;
+        color: #eee;
+    }
+}

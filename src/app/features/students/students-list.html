@@ -1,0 +1,36 @@
+<div class="students-list">
+    <h2>Students</h2>
+
+    <div class="actions">
+        <button (click)="add()" class="btn">Add Student</button>
+    </div>
+
+    <div *ngIf="loading">Loading...</div>
+    <div *ngIf="error" class="error">{{ error }}</div>
+
+    <table *ngIf="students?.length">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let s of students">
+                <td>{{ s.studentID ?? s.id ?? s.StudentID }}</td>
+                <td>{{ s.name ?? s.Name }}</td>
+                <td>{{ s.age ?? s.Age }}</td>
+                <td>{{ s.email ?? s.Email }}</td>
+                <td>
+                    <button (click)="edit(s.studentID ?? s.id ?? s.StudentID)">Edit</button>
+                    <button (click)="delete(s.studentID ?? s.id ?? s.StudentID)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="!students?.length && !loading">No students found.</div>
+</div>
